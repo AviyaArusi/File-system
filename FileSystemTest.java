@@ -41,5 +41,23 @@ class FileSystemTest {
         assertEquals(true, root1.deleteFile("test1","word1"));
 
     }
+    
+        @Test
+    void rootToString() {
+        FileSystem root1 = new FileSystem("root1");
+        root1.addFolder("root1_2");
+        root1.getRoot().getFolders().get("root1_2").addFolder("testFolder2_3");
+        root1.getRoot().getFolders().get("root1_2").addFile("test2", "java");
+        root1.addFolder("testFolder1");
+        root1.addFolder("testFolder2");
+        root1.addFolder("testFolder3");
+        root1.addFile("test1","word");
+        root1.addFile("test1","java");
+        root1.addFile("test1","pc");
+        root1.addFile("test1","file2");
+        root1.rootToString();
+        //Another test of print folder from root folder:
+        //root1.getRoot().getFolders().get("root1_2").rootToString();
+    }
 
 }
