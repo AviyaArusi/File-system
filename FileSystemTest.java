@@ -26,12 +26,19 @@ class FileSystemTest {
 
 
     }
-
     @Test
     void deleteFolder() {
         FileSystem root1 = new FileSystem("root1");
         root1.addFolder("test1");
+        root1.addFolder("root1_2");
+        root1.getRoot().getFolders().get("root1_2").addFolder("testFolder2_3");
+        root1.getRoot().getFolders().get("root1_2").addFile("test2", "java");
         assertEquals(true, root1.deleteFolder("test1"));
+        // When you delete a folder, all the files and folders inside are also deleted.
+        root1.rootToString();
+        root1.deleteFolder("root1_2");
+        root1.rootToString();
+
     }
 
     @Test
